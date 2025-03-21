@@ -1,0 +1,58 @@
+# 基础信息
+
+|      |      |
+|------|------|
+| 名称 | springbootjwtauthloginlogout |
+| 编码语言 | .java |
+| 代码路径 | spring-boot-examples/spring-boot-react-examples/spring-boot-react-jwt-auth-login-logout/backend-spring-boot-react-jwt-auth-login-logout/src/main/java/com/in28minutes/fullstack/springboot/jwt/basic/authentication/springbootjwtauthloginlogout |
+| 包名 | spring-boot-examples.spring-boot-react-examples.spring-boot-react-jwt-auth-login-logout.backend-spring-boot-react-jwt-auth-login-logout.src.main.java.com.in28minutes.fullstack.springboot.jwt.basic.authentication.springbootjwtauthloginlogout |
+| 概述说明 | 基于Spring Boot和React的JWT认证系统，支持登录、注销及令牌生成验证，确保系统安全性。 |
+
+# 说明
+
+## 概述
+
+该代码模块是一个基于Spring Boot和React的JWT认证系统，主要用于处理用户登录、注销以及JWT令牌的生成和验证。模块通过Spring Security配置来确保系统的安全性，同时提供了便捷的开发调试功能。主要组件包括JwtAuthenticationController、JwtTokenService和JwtSecurityConfig，分别负责处理认证请求、生成JWT令牌以及配置Spring Security。此外，模块还支持跨域请求处理和课程信息管理，确保前端应用能够与后端服务进行数据交互，并提供高效的课程数据管理功能。
+
+## 主要业务场景
+
+1. **用户认证**：JwtAuthenticationController处理用户的登录请求，利用认证管理器验证用户身份，并通过JwtTokenService生成JWT令牌。生成的令牌包含用户的权限信息和有效期，用于后续的授权和身份验证。
+2. **JWT令牌生成**：JwtTokenService类通过JwtEncoder生成JWT令牌，确保令牌的安全性和有效性，能够准确反映用户的权限状态和令牌的使用期限。
+3. **安全配置**：JwtSecurityConfig配置Spring Security以支持JWT认证，通过禁用CSRF保护来简化安全性设置，同时设置无状态会话以提升系统性能。此外，允许H2控制台访问以便于开发和调试。
+4. **用户注销**：模块支持用户注销功能，确保用户退出系统后，其JWT令牌失效，防止未授权访问。
+5. **跨域请求处理**：跨域控制器配置允许本地3000和4200端口的访问请求，确保前端应用能够与后端服务进行数据交互。
+6. **课程信息管理**：
+   - 课程服务类中维护了一个硬编码的课程列表，用户可以通过该服务类查询所有课程，获取完整的课程列表。
+   - 支持根据用户名筛选相关课程信息，提升数据获取的精准性，确保用户能够方便地检索和管理与其相关的课程数据。
+
+该模块通过集成JWT认证和课程管理功能，提供了高效且安全的用户身份管理方案，并支持跨域请求处理，确保前后端数据交互的顺畅。
+
+
+### 包内部结构视图
+
+```mermaid
+graph TD
+    springbootjwtauthloginlogout --> jwt
+    springbootjwtauthloginlogout --> course
+    springbootjwtauthloginlogout --> SpringBootFullStackJwtAuthLoginLogoutApplication.java
+    jwt --> JwtTokenResponse.java
+    jwt --> JwtAuthenticationController.java
+    jwt --> JwtTokenService.java
+    jwt --> JwtSecurityConfig.java
+    jwt --> JwtTokenRequest.java
+    course --> CourseResource.java
+    course --> CoursesHardcodedService.java
+    course --> Course.java
+```
+
+该流程图展示了一个基于Spring Boot和JWT的登录注销认证系统的后端代码结构。根节点为`springbootjwtauthloginlogout`，包含三个子节点：`jwt`、`course`和`SpringBootFullStackJwtAuthLoginLogoutApplication.java`。`jwt`节点下包含与JWT认证相关的多个Java文件，`course`节点下包含与课程管理相关的Java文件。整体结构清晰，展示了不同功能模块的层级关系。
+
+# 文件列表 File List
+
+| 名称   | 类型  | 说明 |
+|-------|------|-------------|
+| [SpringBootFullStackJwtAuthLoginLogoutApplication.java](SpringBootFullStackJwtAuthLoginLogoutApplication.md) | file | Spring Boot应用支持JWT认证及登录注销功能。 |
+| [course](course/_module.md) | package | 跨域控制器允许3000和4200端口访问，支持按用户名获取课程列表。课程服务类提供硬编码课程列表查询功能。 |
+| [jwt](jwt/_module.md) | package | Jwt认证控制器处理请求，生成JWT令牌，确保安全有效。 |
+
+
